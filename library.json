@@ -4,32 +4,32 @@
     {
       "name": "The Secret Adversary",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 68
     },
 	{
       "name": "The Man in the Brown Suit",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 72
     },
 	{
       "name": "Murder on the Orient Express",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 56
     },
 	{
       "name": "Cards on the Table",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 45
     },
 	{
       "name": "The Clocks",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 32
     },
 	{
       "name": "The Monogram Murders",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 49
     },
 	{
       "name": "Closed Casket",
@@ -39,7 +39,67 @@
     {
       "name": "Closed Casket",
       "author": "Agatha Christie",
-      "quantity": 10
+      "quantity": 33
+    },
+    {
+      "name": "Gentlemen Prefer Blondes",
+      "author": "Anita Loos",
+      "quantity": 87
+    },
+    {
+      "name": "Tenant",
+      "author": "Anne Brontë",
+      "quantity": 62
+    },
+    {
+      "name": "Breathing Lessons ",
+      "author": "Anne Tyler",
+      "quantity": 65
+    },
+    {
+      "name": "A Clockwork Orange ",
+      "author": "Anthony Burgess",
+      "quantity": 90
+    },
+    {
+      "name": "The Way We Live Now",
+      "author": "Anthony Trollope",
+      "quantity": 52
+    },
+    {
+      "name": "The Heat of the Day ",
+      "author": "Elizabeth Bowen",
+      "quantity": 56
+    },
+    {
+      "name": "The Sun Also Rises",
+      "author": "Ernest Hemingway",
+      "quantity": 23
+    },
+    {
+      "name": "Scoop",
+      "author": "Evelyn Waug",
+      "quantity": 24
+    },
+    {
+      "name": "At Swim-Two-Birds ",
+      "author": "Flann O’Brien",
+      "quantity": 18
+    },
+    {
+      "name": "Cat's Cradle",
+      "author": "Kurt Vonnegut",
+      "quantity": 6
+    },
+    {
+      "name": "Zuleika Dobson",
+      "author": "Max Beerbohm",
+      "quantity": 4
+    },
+    {
+      "name": "Joy in the Morning ",
+      "author": "PG Wodehouse",
+      "quantity": 22
     }
   ]
 }
