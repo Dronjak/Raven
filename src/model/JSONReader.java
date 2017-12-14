@@ -30,11 +30,10 @@ public class JSONReader {
     private static void loadBooks(JSONArray books, Library library) {
         for (int i = 0; i < books.size(); i++) {
             JSONObject book = (JSONObject) books.get(i);
-            Book caughtBook = new Book((String) book.get("name"),(String) book.get("author"),((Long) book.get("quantity")).intValue());
+            Book caughtBook = new Book((String) book.get("name"), (String) book.get("author"), ((Long) book.get("quantity")).intValue());
             if (!caughtBookExists(library.getBooks(), caughtBook)) {
                 library.getBooks().add(caughtBook);
-            }
-            else {
+            } else {
                 getBook(library.getBooks(), caughtBook).setQuantity(getBook(library.getBooks(), caughtBook).getQuantity()
                         + ((Long) book.get("quantity")).intValue());
             }
