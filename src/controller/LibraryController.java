@@ -15,4 +15,11 @@ public class LibraryController {
         this.view = new LibraryView(this);
     }
 
+    public Library getLibrary() {
+        return library;
+    }
+
+    public LibraryView getView() {
+        return view;
+    }
 }

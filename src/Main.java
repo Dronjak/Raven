@@ -1,3 +1,4 @@
+import controller.LibraryController;
 import model.JSONReader;
 import model.Library;
 
@@ -18,9 +19,11 @@ public class Main {
     }
 
     public static void initializeScreen(Library library){
+        LibraryController controller = new LibraryController(library);
+
         JFrame frame = new JFrame(library.getName());
         frame.setLayout(new BorderLayout());
-        //frame.add(controller.getView(), BorderLayout.CENTER);
+        frame.add(controller.getView(), BorderLayout.CENTER);
         frame.setSize(500, 500);
         frame.setVisible(true);
     }
