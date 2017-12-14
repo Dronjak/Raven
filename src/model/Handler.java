@@ -1,10 +1,24 @@
 package model;
 
 public class Handler {
-    public void addBook(){
+    public Handler() {
         // TO DO
     }
-    public void deleteBook(){
+
+    public void addBook() {
         // TO DO
     }
+
+    public void deleteBook() {
+        // TO DO
+    }
+
+    public void getBooksByAuthor() {
+        // TO DO
+    }
+
+    public void getBooksByName() {
+        // TO DO
+    }
+
 }
