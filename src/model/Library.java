@@ -15,6 +15,10 @@ public class Library {
         this.books=new LinkedList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public List<Book> getBooks() {
         return books;
     }
@@ -25,4 +29,6 @@ public class Library {
                 ", books=" + books +
                 '}';
     }
+
+
 }
