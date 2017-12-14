@@ -1,0 +1,40 @@
+{
+  "name": "Library",
+  "books": [
+    {
+      "name": "The Secret Adversary",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "The Man in the Brown Suit",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "Murder on the Orient Express",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "Cards on the Table",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "The Clocks",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "The Monogram Murders",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    },
+	{
+      "name": "Closed Casket",
+      "author": "Agatha Christie",
+      "quantity": 10,
+    } ]
+}
+	
