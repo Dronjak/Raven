@@ -12,6 +12,7 @@ public class LibraryController {
     private Library library;
     private LibraryView view;
     public static Handler handler = new Handler();
+    public Boolean setVisible = false;
 
     public LibraryController(Library library) {
         this.library = library;
@@ -39,22 +40,24 @@ public class LibraryController {
     }
 
     public void showInfoButtonClicked(String name, String author) {
+        setVisible = !setVisible;
         view.infoPanel.removeAll();
         if (!name.equals("")) {
             if (!author.equals("")) {
-                view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library));
+                view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library),setVisible);
             } else {
-                view.createInfoPanel(handler.getBooksByName(name, library));
+                view.createInfoPanel(handler.getBooksByName(name, library),setVisible);
             }
         } else {
-            view.createInfoPanel(handler.getBooksByAuthor(author, library));
+            view.createInfoPanel(handler.getBooksByAuthor(author, library),setVisible);
         }
         view.revalidate();
     }
 
     public void listAllButtonClicked() {
+        setVisible = !setVisible;
         view.infoPanel.removeAll();
-        view.createInfoPanel(library.getBooks());
+        view.createInfoPanel(library.getBooks(),setVisible);
         view.revalidate();
     }
 }

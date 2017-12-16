@@ -66,7 +66,7 @@ public class LibraryView extends JPanel {
         return textFieldPanel;
     }
 
-    public void createInfoPanel(List<Book> books) {
+    public void createInfoPanel(List<Book> books,Boolean setVisible) {
         infoPanel.setLayout(new GridLayout());
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < books.size(); i++) {
@@ -75,6 +75,7 @@ public class LibraryView extends JPanel {
         JList bookList = new JList(listModel);
         infoPanel.add(bookList);
         add(infoPanel, BorderLayout.SOUTH);
+        infoPanel.setVisible(setVisible);
     }
 
 
