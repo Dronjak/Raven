@@ -71,6 +71,16 @@ public class Handler {
         return list;
     }
 
+    public Book getBooksByNameAndAuthor(String name, String author, Library library) {
+        Book book = new Book(name,author,0);
+        for (int i = 0; i < library.getBooks().size(); i++) {
+            if (library.getBooks().get(i).equals(book)) {
+                return library.getBooks().get(i);
+            }
+        }
+        return null;
+    }
+
     public void refreshDatabase(Library library) {
         try {
             FileWriter file = new FileWriter("library.json");
