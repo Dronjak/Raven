@@ -66,14 +66,15 @@ public class Handler {
         return list;
     }
 
-    public Book getBooksByNameAndAuthor(String name, String author, Library library) {
+    public List<Book> getBooksByNameAndAuthor(String name, String author, Library library) {
+        List<Book> list = new LinkedList<>();
         Book book = new Book(name,author,0);
         for (int i = 0; i < library.getBooks().size(); i++) {
             if (library.getBooks().get(i).equals(book)) {
-                return library.getBooks().get(i);
+                list.add(library.getBooks().get(i));
             }
         }
-        return null;
+        return list;
     }
 
     public void refreshDatabase(Library library) {
