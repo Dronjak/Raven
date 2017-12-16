@@ -58,7 +58,6 @@ public class LibraryView extends JPanel {
         textFieldPanel.add(authorInput);
         JTextField quantityInput = new JTextField("Enter quantity: ");
         textFieldPanel.add(quantityInput);
-
         return textFieldPanel;
     }
 }
