@@ -111,7 +111,10 @@ public class LibraryView extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.deleteButtonClicked();
+            String name = nameInput.getText();
+            String author = authorInput.getText();
+            int quantity = parseInt(quantityInput.getText());
+            controller.deleteButtonClicked(name,author,quantity);
         }
     }
     class showInfoButtonListener implements ActionListener {

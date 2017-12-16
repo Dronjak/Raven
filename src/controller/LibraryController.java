@@ -30,7 +30,8 @@ public class LibraryController {
         handler.addBook(name,author,quantity,library);
     }
 
-    public void deleteButtonClicked() {
+    public void deleteButtonClicked(String name,String author,int quantity) {
+        handler.deleteBook(name,author,quantity,library);
     }
 
     public void showInfoButtonClicked() {
