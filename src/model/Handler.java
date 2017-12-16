@@ -6,17 +6,42 @@ import org.json.simple.JSONObject;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Handler {
+public class Handler{
     public Handler() {
         // TO DO
     }
 
-    public void addBook() {
-        // TO DO
+    public void addBook(String name, String author, int quantity, Library library) {
+        boolean exist = false;
+        Book book = new Book(name,author,quantity);
+        for(int i=0; i<library.getBooks().size(); i++){
+            if(book.equals(library.getBooks().get(i))){
+                library.getBooks().get(i).setQuantity(library.getBooks().get(i).getQuantity() + quantity);
+                exist = true;
+                break;
+            }
+        }
+        if(!exist){
+            library.getBooks().add(book);
+        }
     }
 
-    public void deleteBook() {
-        // TO DO
+    public void deleteBook(String name, String author, int quantity, Library library) {
+        Book book = new Book(name,author,quantity);
+        for(int i=0; i<library.getBooks().size(); i++){
+            if(book.equals(library.getBooks().get(i))){
+                if((library.getBooks().get(i).getQuantity()-quantity)> 0){
+                    library.getBooks().get(i).setQuantity(library.getBooks().get(i).getQuantity() - quantity);
+                }
+                else if((library.getBooks().get(i).getQuantity()-quantity) == 0){
+                    library.getBooks().remove(i);
+                }
+                else{
+                    //gives error & please give a valid quantity
+                }
+                break;
+            }
+        }
     }
 
     public void getBooksByAuthor() {
