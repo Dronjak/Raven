@@ -9,9 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Handler {
-    public Handler() {
-        // TO DO
-    }
 
     public void addBook(String name, String author, int quantity, Library library) {
         boolean exist = false;
