@@ -85,10 +85,11 @@ public class LibraryView extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.addButtonClicked();
             String name = nameInput.getText();
             String author = authorInput.getText();
             int quantity = parseInt(quantityInput.getText());
+            controller.addButtonClicked(name,author,quantity);
+
 
         }
     }

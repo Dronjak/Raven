@@ -1,5 +1,6 @@
 package controller;
 
+import model.Book;
 import model.Library;
 import view.LibraryView;
 
@@ -23,7 +24,9 @@ public class LibraryController {
         return view;
     }
 
-    public void addButtonClicked() {
+    public void addButtonClicked(String name,String author,int quantity) {
+        Book book = new Book(name,author,quantity);
+        library.addBook(book);
     }
 
     public void deleteButtonClicked() {
