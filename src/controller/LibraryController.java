@@ -11,7 +11,7 @@ import model.Handler;
 public class LibraryController {
     private Library library;
     private LibraryView view;
-    Handler handler = new Handler();
+    public static Handler handler = new Handler();
 
     public LibraryController(Library library) {
         this.library = library;
@@ -35,7 +35,11 @@ public class LibraryController {
     }
 
     public void showInfoButtonClicked(String name,String author) {
-        //if(!name.equals("") getBooksByName() çağırmak için kullamılabilir.
+        if(!name.equals("")){
+            handler.getBooksByName(name,library);
+        }else{
+            handler.getBooksByAuthor(author,library);
+        }
     }
 
     public void listAllButtonClicked() {
