@@ -121,19 +121,19 @@ public class LibraryView extends JPanel {
         private final LibraryController controller;
         private JTextField nameInput;
         private JTextField authorInput;
-        private JTextField quantityInput;
 
         showInfoButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
             this.controller = controller;
             this.nameInput = nameInput;
             this.authorInput = authorInput;
-            this.quantityInput = quantityInput;
 
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.showInfoButtonClicked();
+            String name = nameInput.getText();
+            String author = authorInput.getText();
+            controller.showInfoButtonClicked(name,author);
         }
     }
     class listAllButtonListener implements ActionListener {

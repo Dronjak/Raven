@@ -34,7 +34,8 @@ public class LibraryController {
         handler.deleteBook(name,author,quantity,library);
     }
 
-    public void showInfoButtonClicked() {
+    public void showInfoButtonClicked(String name,String author) {
+        //if(!name.equals("") getBooksByName() çağırmak için kullamılabilir.
     }
 
     public void listAllButtonClicked() {
