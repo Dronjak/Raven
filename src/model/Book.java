@@ -21,6 +21,14 @@ public class Book {
         return false;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
     public int getQuantity() {
         return quantity;
     }
