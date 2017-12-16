@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
@@ -17,9 +18,7 @@ import static java.lang.Integer.parseInt;
 
 public class LibraryView extends JPanel {
     private LibraryController controller;
-    private JPanel buttonPanel;
-    private JPanel textFieldPanel = new JPanel();
-    private JPanel infoPanel = new JPanel();
+    private JPanel infoPanel;
     private JTextField nameInput;
     private JTextField authorInput;
     private JTextField quantityInput;
@@ -28,120 +27,103 @@ public class LibraryView extends JPanel {
         this.controller = controller;
         setLayout(new BorderLayout());
         add(createButtonPanel(), BorderLayout.NORTH);
-        add(createInfoPanel(controller.getLibrary()), BorderLayout.SOUTH);
         add(createTextFieldPanel(), BorderLayout.CENTER);
-
     }
+
     private JPanel createButtonPanel() {
-        this.buttonPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         JButton addButton = new JButton("Add Book");
-        addButton.addActionListener(new addButtonListener(controller,nameInput,authorInput,quantityInput));
+        addButton.addActionListener(new addButtonListener(controller));
         buttonPanel.add(addButton);
         JButton deleteButton = new JButton("Delete Book");
-        deleteButton.addActionListener(new deleteButtonListener(controller,nameInput,authorInput,quantityInput));
+        deleteButton.addActionListener(new deleteButtonListener(controller));
         buttonPanel.add(deleteButton);
         JButton showInfoButton = new JButton("Show Info");
-        showInfoButton.addActionListener(new showInfoButtonListener(controller,nameInput,authorInput,quantityInput));
+        showInfoButton.addActionListener(new showInfoButtonListener(controller));
         buttonPanel.add(showInfoButton);
         JButton listAllButton = new JButton("List all the books");
         listAllButton.addActionListener(new listAllButtonListener(controller));
         buttonPanel.add(listAllButton);
         return buttonPanel;
     }
-    private JPanel createInfoPanel(Library library) {
-        this.infoPanel = new JPanel();
-        infoPanel.setLayout(new GridLayout());
-        DefaultListModel listModel = new DefaultListModel();
-        for (int i = 0; i < library.getBooks().size();i++){
-            listModel.addElement(library.getBooks().get(i).toString());
-        }
-        JList bookList = new JList(listModel);
-        infoPanel.add(bookList);
-        return infoPanel;
-    }
-    private  JPanel createTextFieldPanel() {
-        this.textFieldPanel = new JPanel();
-        textFieldPanel.setLayout(new FlowLayout());
-        nameInput = new JTextField("Enter books name: ");
+
+    private JPanel createTextFieldPanel() {
+        JPanel textFieldPanel = new JPanel();
+        textFieldPanel.setLayout(new GridLayout(2, 3));
+        JLabel nameLabel = new JLabel("Enter books name: ");
+        textFieldPanel.add(nameLabel);
+        JLabel authorLabel = new JLabel("Enter authors name: ");
+        textFieldPanel.add(authorLabel);
+        JLabel quantityLabel = new JLabel("Enter quantity: ");
+        textFieldPanel.add(quantityLabel);
+        nameInput = new JTextField(13);
         textFieldPanel.add(nameInput);
-        authorInput = new JTextField("Enter authors name: ");
+        authorInput = new JTextField(13);
         textFieldPanel.add(authorInput);
-        quantityInput = new JTextField("Enter quantity: ");
+        quantityInput = new JTextField(5);
         textFieldPanel.add(quantityInput);
         return textFieldPanel;
     }
 
+    public void createInfoPanel(List<Book> books) {
+        this.infoPanel = new JPanel();
+        infoPanel.setLayout(new GridLayout());
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < books.size(); i++) {
+            listModel.addElement(books.get(i).toString());
+        }
+        JList bookList = new JList(listModel);
+        infoPanel.add(bookList);
+        add(infoPanel, BorderLayout.SOUTH);
+    }
+
+
     class addButtonListener implements ActionListener {
         private final LibraryController controller;
-        private JTextField nameInput;
-        private JTextField authorInput;
-        private JTextField quantityInput;
 
-        addButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
+
+        addButtonListener(LibraryController controller) {
             this.controller = controller;
-            this.nameInput = nameInput;
-            this.authorInput = authorInput;
-            this.quantityInput = quantityInput;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String name = nameInput.getText();
-            String author = authorInput.getText();
-            int quantity = parseInt(quantityInput.getText());
-            controller.addButtonClicked(name,author,quantity);
-
-
+            controller.addButtonClicked(getNameInput(), getAuthorInput(), getParseInput(getQuantityInput()));
         }
     }
+
     class deleteButtonListener implements ActionListener {
         private final LibraryController controller;
-        private JTextField nameInput;
-        private JTextField authorInput;
-        private JTextField quantityInput;
 
-        deleteButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
+        deleteButtonListener(LibraryController controller) {
             this.controller = controller;
-            this.nameInput = nameInput;
-            this.authorInput = authorInput;
-            this.quantityInput = quantityInput;
-
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String name = nameInput.getText();
-            String author = authorInput.getText();
-            int quantity = parseInt(quantityInput.getText());
-            controller.deleteButtonClicked(name,author,quantity);
+            controller.deleteButtonClicked(getNameInput(), getAuthorInput(), getParseInput(getQuantityInput()));
         }
     }
+
     class showInfoButtonListener implements ActionListener {
         private final LibraryController controller;
-        private JTextField nameInput;
-        private JTextField authorInput;
 
-        showInfoButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
+        showInfoButtonListener(LibraryController controller) {
             this.controller = controller;
-            this.nameInput = nameInput;
-            this.authorInput = authorInput;
-
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String name = nameInput.getText();
-            String author = authorInput.getText();
-            controller.showInfoButtonClicked(name,author);
+            controller.showInfoButtonClicked(getNameInput(), getAuthorInput());
         }
     }
+
     class listAllButtonListener implements ActionListener {
         private final LibraryController controller;
 
         listAllButtonListener(LibraryController controller) {
             this.controller = controller;
-
         }
 
         @Override
@@ -149,4 +131,45 @@ public class LibraryView extends JPanel {
             controller.listAllButtonClicked();
         }
     }
+
+    private String getNameInput() {
+        String name;
+        try {
+            name = nameInput.getText();
+        } catch (NullPointerException e) {
+            return "";
+        }
+        return name;
+    }
+
+    private String getAuthorInput() {
+        String author;
+        try {
+            author = authorInput.getText();
+        } catch (NullPointerException e) {
+            return "";
+        }
+        return author;
+    }
+
+    private String getQuantityInput() {
+        String quantity;
+        try {
+            quantity = authorInput.getText();
+        } catch (NullPointerException e) {
+            return "";
+        }
+        return quantity;
+    }
+
+    private int getParseInput(String quantity) {
+        int parseInput;
+        try {
+            parseInput = parseInt(quantity);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return parseInput;
+    }
+
 }

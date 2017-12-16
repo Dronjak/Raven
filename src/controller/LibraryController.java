@@ -26,22 +26,31 @@ public class LibraryController {
         return view;
     }
 
-    public void addButtonClicked(String name,String author,int quantity) {
-        handler.addBook(name,author,quantity,library);
+    public void addButtonClicked(String name, String author, int quantity) {
+        handler.addBook(name, author, quantity, library);
+        view.revalidate();
     }
 
-    public void deleteButtonClicked(String name,String author,int quantity) {
-        handler.deleteBook(name,author,quantity,library);
+    public void deleteButtonClicked(String name, String author, int quantity) {
+        handler.deleteBook(name, author, quantity, library);
+        view.revalidate();
     }
 
-    public void showInfoButtonClicked(String name,String author) {
-        if(!name.equals("")){
-            handler.getBooksByName(name,library);
-        }else{
-            handler.getBooksByAuthor(author,library);
+    public void showInfoButtonClicked(String name, String author) {
+        if (!name.equals("")) {
+            if (!author.equals("")) {
+                view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library));
+            } else {
+                view.createInfoPanel(handler.getBooksByName(name, library));
+            }
+        } else {
+            view.createInfoPanel(handler.getBooksByAuthor(author, library));
         }
+        view.revalidate();
     }
 
     public void listAllButtonClicked() {
+        view.createInfoPanel(library.getBooks());
+        view.revalidate();
     }
 }
