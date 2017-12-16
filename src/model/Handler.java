@@ -68,9 +68,9 @@ public class Handler {
 
     public List<Book> getBooksByNameAndAuthor(String name, String author, Library library) {
         List<Book> list = new LinkedList<>();
-        Book book = new Book(name,author,0);
+
         for (int i = 0; i < library.getBooks().size(); i++) {
-            if (library.getBooks().get(i).equals(book)) {
+            if (library.getBooks().get(i).getName().equals(name) && library.getBooks().get(i).getAuthor().equals(author)) {
                 list.add(library.getBooks().get(i));
             }
         }
