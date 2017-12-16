@@ -31,12 +31,16 @@ public class LibraryView extends JPanel {
         this.buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         JButton addButton = new JButton("Add Book");
+        addButton.addActionListener(new addButtonListener(controller));
         buttonPanel.add(addButton);
         JButton deleteButton = new JButton("Delete Book");
+        deleteButton.addActionListener(new deleteButtonListener(controller));
         buttonPanel.add(deleteButton);
-        JButton infoButton = new JButton("Show Info");
-        buttonPanel.add(infoButton);
+        JButton showInfoButton = new JButton("Show Info");
+        showInfoButton.addActionListener(new showInfoButtonListener(controller));
+        buttonPanel.add(showInfoButton);
         JButton listAllButton = new JButton("List all the books");
+        listAllButton.addActionListener(new listAllButtonListener(controller));
         buttonPanel.add(listAllButton);
         return buttonPanel;
     }
