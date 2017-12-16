@@ -1,6 +1,8 @@
 package view;
 
 import controller.LibraryController;
+import model.Book;
+import model.Library;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +21,7 @@ public class LibraryView extends JPanel {
         this.controller = controller;
         setLayout(new BorderLayout());
         add(createButtonPanel(), BorderLayout.WEST);
+        add(createInfoPanel(controller.getLibrary()), BorderLayout.SOUTH);
 
     }
     private JPanel createButtonPanel() {
@@ -33,5 +36,16 @@ public class LibraryView extends JPanel {
         JButton listAllButton = new JButton("List all the books");
         buttonPanel.add(listAllButton);
         return buttonPanel;
+    }
+    private JPanel createInfoPanel(Library library) {
+        this.infoPanel = new JPanel();
+        infoPanel.setLayout(new GridLayout());
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < library.getBooks().size();i++){
+            listModel.addElement(library.getBooks().get(i).toString());
+        }
+        JList bookList = new JList(listModel);
+        infoPanel.add(bookList);
+        return infoPanel;
     }
 }
