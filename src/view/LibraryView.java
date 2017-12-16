@@ -72,7 +72,10 @@ public class LibraryView extends JPanel {
             listModel.addElement(books.get(i).toString());
         }
         JList bookList = new JList(listModel);
-        infoPanel.add(bookList);
+        bookList.setVisibleRowCount(20);
+        JScrollPane listScroller = new JScrollPane();
+        listScroller.setViewportView(bookList);
+        infoPanel.add(listScroller);
         add(infoPanel, BorderLayout.SOUTH);
     }
 
@@ -153,17 +156,17 @@ public class LibraryView extends JPanel {
     private String getQuantityInput() {
         String quantity;
         try {
-            quantity = authorInput.getText();
+            quantity = quantityInput.getText();
         } catch (NullPointerException e) {
-            return "";
+            return "0";
         }
         return quantity;
     }
 
     private int getParseInput(String quantity) {
-        int parseInput;
+        int parseInput = 0;
         try {
-            parseInput = parseInt(quantity);
+            parseInput += parseInt(quantity);
         } catch (NumberFormatException e) {
             return 0;
         }
