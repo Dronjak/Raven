@@ -22,4 +22,16 @@ public class LibraryController {
     public LibraryView getView() {
         return view;
     }
+
+    public void addButtonClicked() {
+    }
+
+    public void deleteButtonClicked() {
+    }
+
+    public void showInfoButtonClicked() {
+    }
+
+    public void listAllButtonClicked() {
+    }
 }

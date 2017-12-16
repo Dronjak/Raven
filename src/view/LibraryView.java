@@ -6,6 +6,8 @@ import model.Library;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Batzuhan on 14/12/2017.
@@ -59,5 +61,58 @@ public class LibraryView extends JPanel {
         JTextField quantityInput = new JTextField("Enter quantity: ");
         textFieldPanel.add(quantityInput);
         return textFieldPanel;
+    }
+
+    class addButtonListener implements ActionListener {
+        private final LibraryController controller;
+
+        addButtonListener(LibraryController controller) {
+            this.controller = controller;
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.addButtonClicked();
+        }
+    }
+    class deleteButtonListener implements ActionListener {
+        private final LibraryController controller;
+
+        deleteButtonListener(LibraryController controller) {
+            this.controller = controller;
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.deleteButtonClicked();
+        }
+    }
+    class showInfoButtonListener implements ActionListener {
+        private final LibraryController controller;
+
+        showInfoButtonListener(LibraryController controller) {
+            this.controller = controller;
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.showInfoButtonClicked();
+        }
+    }
+    class listAllButtonListener implements ActionListener {
+        private final LibraryController controller;
+
+        listAllButtonListener(LibraryController controller) {
+            this.controller = controller;
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.listAllButtonClicked();
+        }
     }
 }
