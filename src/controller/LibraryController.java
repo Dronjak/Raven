@@ -27,16 +27,19 @@ public class LibraryController {
     }
 
     public void addButtonClicked(String name, String author, int quantity) {
+        view.infoPanel.removeAll();
         handler.addBook(name, author, quantity, library);
         view.revalidate();
     }
 
     public void deleteButtonClicked(String name, String author, int quantity) {
+        view.infoPanel.removeAll();
         handler.deleteBook(name, author, quantity, library);
         view.revalidate();
     }
 
     public void showInfoButtonClicked(String name, String author) {
+        view.infoPanel.removeAll();
         if (!name.equals("")) {
             if (!author.equals("")) {
                 view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library));
@@ -50,6 +53,7 @@ public class LibraryController {
     }
 
     public void listAllButtonClicked() {
+        view.infoPanel.removeAll();
         view.createInfoPanel(library.getBooks());
         view.revalidate();
     }
