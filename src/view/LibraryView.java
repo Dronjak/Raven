@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by Batzuhan on 14/12/2017.
  */
@@ -18,6 +20,9 @@ public class LibraryView extends JPanel {
     private JPanel buttonPanel;
     private JPanel textFieldPanel = new JPanel();
     private JPanel infoPanel = new JPanel();
+    public JTextField nameInput;
+    public JTextField authorInput;
+    public JTextField quantityInput;
 
     public LibraryView(LibraryController controller) {
         this.controller = controller;
@@ -58,11 +63,14 @@ public class LibraryView extends JPanel {
     private  JPanel createTextFieldPanel() {
         this.textFieldPanel = new JPanel();
         textFieldPanel.setLayout(new FlowLayout());
-        JTextField nameInput = new JTextField("Enter books name: ");
+        nameInput = new JTextField("Enter books name: ");
+        nameInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(nameInput);
-        JTextField authorInput = new JTextField("Enter authors name: ");
+        authorInput = new JTextField("Enter authors name: ");
+        authorInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(authorInput);
-        JTextField quantityInput = new JTextField("Enter quantity: ");
+        quantityInput = new JTextField("Enter quantity: ");
+        quantityInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(quantityInput);
         return textFieldPanel;
     }
@@ -78,6 +86,10 @@ public class LibraryView extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             controller.addButtonClicked();
+            String name = nameInput.getText();
+            String author = authorInput.getText();
+            int quantity = parseInt(quantityInput.getText());
+
         }
     }
     class deleteButtonListener implements ActionListener {
