@@ -5,60 +5,72 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
-public class Handler{
+public class Handler {
     public Handler() {
         // TO DO
     }
 
     public void addBook(String name, String author, int quantity, Library library) {
         boolean exist = false;
-        Book book = new Book(name,author,quantity);
-        for(int i=0; i<library.getBooks().size(); i++){
-            if(book.equals(library.getBooks().get(i))){
+        Book book = new Book(name, author, quantity);
+        for (int i = 0; i < library.getBooks().size(); i++) {
+            if (book.equals(library.getBooks().get(i))) {
                 library.getBooks().get(i).setQuantity(library.getBooks().get(i).getQuantity() + quantity);
                 exist = true;
                 break;
             }
         }
-        if(!exist){
+        if (!exist) {
             library.getBooks().add(book);
         }
     }
 
     public void deleteBook(String name, String author, int quantity, Library library) {
-        Book book = new Book(name,author,quantity);
+        Book book = new Book(name, author, quantity);
         boolean exist = false;
-        for(int i=0; i<library.getBooks().size(); i++){
-            if(book.equals(library.getBooks().get(i))){
-                if((library.getBooks().get(i).getQuantity()-quantity)> 0){
+        for (int i = 0; i < library.getBooks().size(); i++) {
+            if (book.equals(library.getBooks().get(i))) {
+                if ((library.getBooks().get(i).getQuantity() - quantity) > 0) {
                     library.getBooks().get(i).setQuantity(library.getBooks().get(i).getQuantity() - quantity);
-                }
-                else if((library.getBooks().get(i).getQuantity()-quantity) == 0){
+                } else if ((library.getBooks().get(i).getQuantity() - quantity) == 0) {
                     library.getBooks().remove(i);
-                }
-                else{
+                } else {
                     //gives error & please give a valid quantity
                 }
                 exist = true;
                 break;
             }
         }
-
-        if(!exist){
+        if (!exist) {
             //There is no such book
         }
     }
 
-    public void getBooksByAuthor() {
-        // TO DO
+    public List<Book> getBooksByAuthor(String author, Library library) {
+        List<Book> list = new List<Book>;
+
+        for (int i = 0; i < library.getBooks().size(); i++) {
+            if (author.equals(library.getBooks().get(i).getAuthor())) {
+                list.add(library.getBooks().get(i));
+            }
+        }
+        return list;
     }
 
-    public void getBooksByName() {
-        // TO DO
+    public List<Book> getBooksByName(String name, Library library) {
+        List<Book> list = new List<Book>;
+
+        for (int i = 0; i < library.getBooks().size(); i++) {
+            if (name.equals(library.getBooks().get(i).getName())) {
+                list.add(library.getBooks().get(i));
+            }
+        }
+        return list;
     }
 
-    public void refreshDatabase (Library library) {
+    public void refreshDatabase(Library library) {
         try {
             FileWriter file = new FileWriter("library.json");
             JSONObject obj = new JSONObject();
