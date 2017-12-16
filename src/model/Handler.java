@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Handler {
@@ -49,8 +50,7 @@ public class Handler {
     }
 
     public List<Book> getBooksByAuthor(String author, Library library) {
-        List<Book> list = new List<Book>;
-
+        List<Book> list = new LinkedList<>();
         for (int i = 0; i < library.getBooks().size(); i++) {
             if (author.equals(library.getBooks().get(i).getAuthor())) {
                 list.add(library.getBooks().get(i));
@@ -60,8 +60,7 @@ public class Handler {
     }
 
     public List<Book> getBooksByName(String name, Library library) {
-        List<Book> list = new List<Book>;
-
+        List<Book> list = new LinkedList<>();
         for (int i = 0; i < library.getBooks().size(); i++) {
             if (name.equals(library.getBooks().get(i).getName())) {
                 list.add(library.getBooks().get(i));
