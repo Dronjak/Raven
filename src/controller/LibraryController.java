@@ -3,6 +3,7 @@ package controller;
 import model.Book;
 import model.Library;
 import view.LibraryView;
+import model.Handler;
 
 /**
  * Created by Batzuhan on 14/12/2017.
@@ -10,6 +11,7 @@ import view.LibraryView;
 public class LibraryController {
     private Library library;
     private LibraryView view;
+    Handler handler = new Handler();
 
     public LibraryController(Library library) {
         this.library = library;
@@ -25,8 +27,7 @@ public class LibraryController {
     }
 
     public void addButtonClicked(String name,String author,int quantity) {
-        Book book = new Book(name,author,quantity);
-        library.addBook(book);
+        handler.addBook(name,author,quantity,library);
     }
 
     public void deleteButtonClicked() {

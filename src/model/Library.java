@@ -29,10 +29,4 @@ public class Library {
                 ", books=" + books +
                 '}';
     }
-
-    public void addBook(Book book){
-        books.add(book);
-    }
-
-
 }
