@@ -18,7 +18,7 @@ import static java.lang.Integer.parseInt;
 
 public class LibraryView extends JPanel {
     private LibraryController controller;
-    private JPanel infoPanel;
+    public JPanel infoPanel = new JPanel();
     private JTextField nameInput;
     private JTextField authorInput;
     private JTextField quantityInput;
@@ -67,7 +67,6 @@ public class LibraryView extends JPanel {
     }
 
     public void createInfoPanel(List<Book> books) {
-        this.infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout());
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < books.size(); i++) {
