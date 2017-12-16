@@ -20,8 +20,9 @@ public class LibraryView extends JPanel {
     public LibraryView(LibraryController controller) {
         this.controller = controller;
         setLayout(new BorderLayout());
-        add(createButtonPanel(), BorderLayout.WEST);
+        add(createButtonPanel(), BorderLayout.NORTH);
         add(createInfoPanel(controller.getLibrary()), BorderLayout.SOUTH);
+        add(createTextFieldPanel(), BorderLayout.CENTER);
 
     }
     private JPanel createButtonPanel() {
@@ -47,5 +48,17 @@ public class LibraryView extends JPanel {
         JList bookList = new JList(listModel);
         infoPanel.add(bookList);
         return infoPanel;
+    }
+    private  JPanel createTextFieldPanel() {
+        this.textFieldPanel = new JPanel();
+        textFieldPanel.setLayout(new FlowLayout());
+        JTextField nameInput = new JTextField("Enter books name: ");
+        textFieldPanel.add(nameInput);
+        JTextField authorInput = new JTextField("Enter authors name: ");
+        textFieldPanel.add(authorInput);
+        JTextField quantityInput = new JTextField("Enter quantity: ");
+        textFieldPanel.add(quantityInput);
+
+        return textFieldPanel;
     }
 }
