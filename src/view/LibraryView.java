@@ -20,9 +20,9 @@ public class LibraryView extends JPanel {
     private JPanel buttonPanel;
     private JPanel textFieldPanel = new JPanel();
     private JPanel infoPanel = new JPanel();
-    public JTextField nameInput;
-    public JTextField authorInput;
-    public JTextField quantityInput;
+    private JTextField nameInput;
+    private JTextField authorInput;
+    private JTextField quantityInput;
 
     public LibraryView(LibraryController controller) {
         this.controller = controller;
@@ -36,13 +36,13 @@ public class LibraryView extends JPanel {
         this.buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         JButton addButton = new JButton("Add Book");
-        addButton.addActionListener(new addButtonListener(controller));
+        addButton.addActionListener(new addButtonListener(controller,nameInput,authorInput,quantityInput));
         buttonPanel.add(addButton);
         JButton deleteButton = new JButton("Delete Book");
-        deleteButton.addActionListener(new deleteButtonListener(controller));
+        deleteButton.addActionListener(new deleteButtonListener(controller,nameInput,authorInput,quantityInput));
         buttonPanel.add(deleteButton);
         JButton showInfoButton = new JButton("Show Info");
-        showInfoButton.addActionListener(new showInfoButtonListener(controller));
+        showInfoButton.addActionListener(new showInfoButtonListener(controller,nameInput,authorInput,quantityInput));
         buttonPanel.add(showInfoButton);
         JButton listAllButton = new JButton("List all the books");
         listAllButton.addActionListener(new listAllButtonListener(controller));
@@ -64,23 +64,25 @@ public class LibraryView extends JPanel {
         this.textFieldPanel = new JPanel();
         textFieldPanel.setLayout(new FlowLayout());
         nameInput = new JTextField("Enter books name: ");
-        nameInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(nameInput);
         authorInput = new JTextField("Enter authors name: ");
-        authorInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(authorInput);
         quantityInput = new JTextField("Enter quantity: ");
-        quantityInput.addActionListener(new addButtonListener(controller));
         textFieldPanel.add(quantityInput);
         return textFieldPanel;
     }
 
     class addButtonListener implements ActionListener {
         private final LibraryController controller;
+        private JTextField nameInput;
+        private JTextField authorInput;
+        private JTextField quantityInput;
 
-        addButtonListener(LibraryController controller) {
+        addButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
             this.controller = controller;
-
+            this.nameInput = nameInput;
+            this.authorInput = authorInput;
+            this.quantityInput = quantityInput;
         }
 
         @Override
@@ -95,9 +97,15 @@ public class LibraryView extends JPanel {
     }
     class deleteButtonListener implements ActionListener {
         private final LibraryController controller;
+        private JTextField nameInput;
+        private JTextField authorInput;
+        private JTextField quantityInput;
 
-        deleteButtonListener(LibraryController controller) {
+        deleteButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
             this.controller = controller;
+            this.nameInput = nameInput;
+            this.authorInput = authorInput;
+            this.quantityInput = quantityInput;
 
         }
 
@@ -108,9 +116,15 @@ public class LibraryView extends JPanel {
     }
     class showInfoButtonListener implements ActionListener {
         private final LibraryController controller;
+        private JTextField nameInput;
+        private JTextField authorInput;
+        private JTextField quantityInput;
 
-        showInfoButtonListener(LibraryController controller) {
+        showInfoButtonListener(LibraryController controller,JTextField nameInput,JTextField authorInput,JTextField quantityInput) {
             this.controller = controller;
+            this.nameInput = nameInput;
+            this.authorInput = authorInput;
+            this.quantityInput = quantityInput;
 
         }
 
