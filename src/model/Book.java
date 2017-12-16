@@ -10,17 +10,9 @@ public class Book {
 
 
     public Book(String name, String author, int quantity) {
-        if (checkValid(name, author, quantity)) {
             this.name = name;
             this.author = author;
             this.quantity = quantity;
-        }
-    }
-
-    public boolean checkValid(String name, String author, int quantity) {
-        if (name.equals("") || author.equals("") || quantity == 0)
-            return false;
-        return true;
     }
 
     public boolean equals(Object anObject) {
