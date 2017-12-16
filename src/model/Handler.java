@@ -28,6 +28,7 @@ public class Handler{
 
     public void deleteBook(String name, String author, int quantity, Library library) {
         Book book = new Book(name,author,quantity);
+        boolean exist = false;
         for(int i=0; i<library.getBooks().size(); i++){
             if(book.equals(library.getBooks().get(i))){
                 if((library.getBooks().get(i).getQuantity()-quantity)> 0){
@@ -39,8 +40,13 @@ public class Handler{
                 else{
                     //gives error & please give a valid quantity
                 }
+                exist = true;
                 break;
             }
+        }
+
+        if(!exist){
+            //There is no such book
         }
     }
 
