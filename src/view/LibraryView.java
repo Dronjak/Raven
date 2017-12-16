@@ -18,6 +18,7 @@ import static java.lang.Integer.parseInt;
 
 public class LibraryView extends JPanel {
     private LibraryController controller;
+    public JPanel textFieldPanel = new JPanel();
     public JPanel infoPanel = new JPanel();
     private JTextField nameInput;
     private JTextField authorInput;
@@ -27,7 +28,6 @@ public class LibraryView extends JPanel {
         this.controller = controller;
         setLayout(new BorderLayout());
         add(createButtonPanel(), BorderLayout.NORTH);
-        add(createTextFieldPanel(), BorderLayout.CENTER);
     }
 
     private JPanel createButtonPanel() {
@@ -48,8 +48,7 @@ public class LibraryView extends JPanel {
         return buttonPanel;
     }
 
-    private JPanel createTextFieldPanel() {
-        JPanel textFieldPanel = new JPanel();
+    public void createTextFieldPanel() {
         textFieldPanel.setLayout(new GridLayout(2, 3));
         JLabel nameLabel = new JLabel("Enter books name: ");
         textFieldPanel.add(nameLabel);
@@ -63,10 +62,10 @@ public class LibraryView extends JPanel {
         textFieldPanel.add(authorInput);
         quantityInput = new JTextField(5);
         textFieldPanel.add(quantityInput);
-        return textFieldPanel;
+        add(textFieldPanel, BorderLayout.CENTER);
     }
 
-    public void createInfoPanel(List<Book> books,Boolean setVisible) {
+    public void createInfoPanel(List<Book> books) {
         infoPanel.setLayout(new GridLayout());
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < books.size(); i++) {
@@ -75,7 +74,6 @@ public class LibraryView extends JPanel {
         JList bookList = new JList(listModel);
         infoPanel.add(bookList);
         add(infoPanel, BorderLayout.SOUTH);
-        infoPanel.setVisible(setVisible);
     }
 
 

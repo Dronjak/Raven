@@ -28,28 +28,33 @@ public class LibraryController {
     }
 
     public void addButtonClicked(String name, String author, int quantity) {
+        view.textFieldPanel.removeAll();
         view.infoPanel.removeAll();
         handler.addBook(name, author, quantity, library);
+        view.createTextFieldPanel();
         view.revalidate();
     }
 
     public void deleteButtonClicked(String name, String author, int quantity) {
+        view.textFieldPanel.removeAll();
         view.infoPanel.removeAll();
         handler.deleteBook(name, author, quantity, library);
+        view.createTextFieldPanel();
         view.revalidate();
     }
 
     public void showInfoButtonClicked(String name, String author) {
-        setVisible = !setVisible;
+        view.textFieldPanel.removeAll();
         view.infoPanel.removeAll();
+        view.createTextFieldPanel();
         if (!name.equals("")) {
             if (!author.equals("")) {
-                view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library),setVisible);
+                view.createInfoPanel(handler.getBooksByNameAndAuthor(name, author, library));
             } else {
-                view.createInfoPanel(handler.getBooksByName(name, library),setVisible);
+                view.createInfoPanel(handler.getBooksByName(name, library));
             }
         } else {
-            view.createInfoPanel(handler.getBooksByAuthor(author, library),setVisible);
+            view.createInfoPanel(handler.getBooksByAuthor(author, library));
         }
         view.revalidate();
     }
@@ -57,7 +62,8 @@ public class LibraryController {
     public void listAllButtonClicked() {
         setVisible = !setVisible;
         view.infoPanel.removeAll();
-        view.createInfoPanel(library.getBooks(),setVisible);
+        view.createInfoPanel(library.getBooks());
+        view.infoPanel.setVisible(setVisible);
         view.revalidate();
     }
 }
