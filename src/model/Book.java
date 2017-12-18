@@ -10,9 +10,12 @@ public class Book {
 
 
     public Book(String name, String author, int quantity) {
+        if ((name.length() == 0) || (author.length() == 0)) {}
+        else {
             this.name = name;
             this.author = author;
             this.quantity = quantity;
+        }
     }
 
     public boolean equals(Object anObject) {
@@ -35,6 +38,12 @@ public class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isNull() {
+        if (this.name == null)
+            return true;
+        return false;
     }
 
     public String toString() {
