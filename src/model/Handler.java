@@ -29,7 +29,6 @@ public class Handler {
         }
     }
 
-    //Quantity is expected to be non-negative.
     public void deleteBook(String name, String author, int quantity, Library library) {
         if (quantity <= 0)
             return;
