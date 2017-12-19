@@ -10,7 +10,11 @@ import java.util.List;
 
 public class Handler {
 
+    //If the book exists, its quantity is increased. If it doesn't, a new entity is added to the library.
+    //If the entity entered is negative, does nothing.
     public void addBook(String name, String author, int quantity, Library library) {
+        if (quantity <= 0)
+            return;
         boolean exist = false;
         Book book = new Book(name, author, quantity);
         for (int i = 0; i < library.getBooks().size(); i++) {
@@ -24,7 +28,7 @@ public class Handler {
             library.getBooks().add(book);
         }
     }
-
+    //Quantity is expected to be positive.
     public void deleteBook(String name, String author, int quantity, Library library) {
         Book book = new Book(name, author, quantity);
         boolean exist = false;
@@ -35,7 +39,7 @@ public class Handler {
                 } else if ((library.getBooks().get(i).getQuantity() - quantity) == 0) {
                     library.getBooks().remove(i);
                 } else {
-                    //gives error & please give a valid quantity
+                    //gives error & please give a valid quantity.
                 }
                 exist = true;
                 break;

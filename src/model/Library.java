@@ -11,8 +11,11 @@ public class Library {
     private List<Book> books;
 
     public Library(String name) {
-        this.name = name;
-        this.books=new LinkedList<>();
+        if (name.length() == 0) {}
+        else {
+            this.name = name;
+            this.books = new LinkedList<>();
+        }
     }
 
     public String getName() {
