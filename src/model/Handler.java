@@ -28,8 +28,11 @@ public class Handler {
             library.getBooks().add(book);
         }
     }
-    //Quantity is expected to be positive.
+
+    //Quantity is expected to be non-negative.
     public void deleteBook(String name, String author, int quantity, Library library) {
+        if (quantity <= 0)
+            return;
         Book book = new Book(name, author, quantity);
         boolean exist = false;
         for (int i = 0; i < library.getBooks().size(); i++) {

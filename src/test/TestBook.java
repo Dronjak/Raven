@@ -27,11 +27,6 @@ class TestBook {
 
     @Test
     void testBook4() {
-        assertThrows(IllegalArgumentException.class, () -> { new Book(null, "John Le Carre", 8); });
-    }
-
-    @Test
-    void testBook5() {
         Book bat = new Book("Bat", "", 9);
         assertSame(bat.getAuthor(), "");
     }

@@ -37,11 +37,6 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public boolean isNull() {
-        if (this.name == null)
-            return true;
-        return false;
-    }
 
     public String toString() {
         return "Book{" +
