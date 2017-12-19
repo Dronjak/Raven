@@ -39,10 +39,10 @@ public class LibraryView extends JPanel {
         JButton deleteButton = new JButton("Delete Book");
         deleteButton.addActionListener(new deleteButtonListener(controller));
         buttonPanel.add(deleteButton);
-        JButton showInfoButton = new JButton("Show Info");
+        JButton showInfoButton = new JButton("Search");
         showInfoButton.addActionListener(new showInfoButtonListener(controller));
         buttonPanel.add(showInfoButton);
-        JButton listAllButton = new JButton("List all the books");
+        JButton listAllButton = new JButton("See Whole Library");
         listAllButton.addActionListener(new listAllButtonListener(controller));
         buttonPanel.add(listAllButton);
         return buttonPanel;
